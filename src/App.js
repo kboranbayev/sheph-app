@@ -1,23 +1,24 @@
 import React from "react";
-import logo from "./logo.svg";
-import "./App.css";
+import PropTypes from "prop-types";
+import { Route } from "react-router-dom";
+import TopNavigation from "./components/navigation/TopNavigation";
+import HomePage from "./components/pages/HomePage";
+import AboutPage from "./components/pages/AboutPage";
+import ContactPage from "./components/pages/ContactPage";
 
-function App() {
-  return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
-  );
-}
+const App = ({ location }) => (
+  <div className="App">
+    <Route location={location} path="/" component={TopNavigation} />
+    <Route location={location} path="/" exact component={HomePage} />
+    <Route location={location} path="/about" exact component={AboutPage} />
+    <Route location={location} path="/contact" exact component={ContactPage} />
+  </div>
+);
+
+App.propTypes = {
+  location: PropTypes.shape({
+    pathname: PropTypes.string.isRequired
+  }).isRequired
+};
 
 export default App;
