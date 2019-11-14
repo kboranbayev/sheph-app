@@ -10,7 +10,7 @@ class App extends Component {
     return (
       <BrowserRouter>
         <div>
-          <Header backColor={'#005fbf'} />
+          <Header backColor={'#0062b3'} />
           <div className="main-content-container container-fluid px-4">
             <Router />
           </div>

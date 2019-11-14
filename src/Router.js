@@ -1,9 +1,9 @@
 import React, {Component} from 'react';
 import {Switch, Route} from 'react-router-dom';
-import About from './components/pages/about.js'
-import Main from './components/pages/main.js'
-import IncidentMap from './components/pages/incident-map.js'
-import Submit from './components/pages/submit.js'
+import About from './pages/about.js'
+import Main from './pages/main.js'
+import IncidentMap from './pages/incident-map.js'
+import Submit from './pages/submit.js'
 
 class Router extends Component {
     render() {
