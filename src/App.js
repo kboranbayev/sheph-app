@@ -1,23 +1,23 @@
-import React from "react";
-import logo from "./logo.svg";
-import "./App.css";
+import React, {Component} from 'react';
+import './App.css';
+import Header from './components/static/header.js';
+import {BrowserRouter} from 'react-router-dom';
+import Router from './Router';
 
-function App() {
-  return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
-  );
+
+class App extends Component {
+  render() {
+    return (
+      <BrowserRouter>
+        <div>
+          <Header backColor={'#0062b3'} />
+          <div className="main-content-container container-fluid px-4">
+            <Router />
+          </div>
+        </div>
+      </BrowserRouter>
+    );
+  }
 }
 
 export default App;
