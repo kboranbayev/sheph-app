@@ -1,24 +1,20 @@
 import React from "react";
-import PropTypes from "prop-types";
 import { Route } from "react-router-dom";
 import TopNavigation from "./components/navigation/TopNavigation";
 import HomePage from "./components/pages/HomePage";
 import AboutPage from "./components/pages/AboutPage";
 import ContactPage from "./components/pages/ContactPage";
+import NewEntryPage from "./components/pages/NewEntryPage";
 
-const App = ({ location }) => (
+const App = () => (
   <div className="App">
-    <Route location={location} path="/" component={TopNavigation} />
-    <Route location={location} path="/" exact component={HomePage} />
-    <Route location={location} path="/about" exact component={AboutPage} />
-    <Route location={location} path="/contact" exact component={ContactPage} />
+    <Route path="/" component={TopNavigation} />
+    <Route path="/" exact component={HomePage} />
+    <Route path="/about" exact component={AboutPage} />
+    <Route path="/contact" exact component={ContactPage} />
+    <Route path="/new_entry" exact component={NewEntryPage} />
   </div>
 );
 
-App.propTypes = {
-  location: PropTypes.shape({
-    pathname: PropTypes.string.isRequired
-  }).isRequired
-};
 
 export default App;
