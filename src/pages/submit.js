@@ -43,6 +43,7 @@ class Submit extends Component {
   
     handleSubmit(event)
     {
+      event.preventDefault();
       const errors = this.validate(this.state);
       const data = new FormData();
       data.append('file', this.state.file);
@@ -56,12 +57,12 @@ class Submit extends Component {
       data.append('incidentTime', this.state.incidentTime);
       data.append('incidentDate', this.state.incidentDate);
       data.append('incidentLocation', this.state.incidentLocation);
-    
+      
       axios.post(`/server/add`, data).then((res) => {
         console.log(res);
       });
       
-      event.preventDefault();
+      
     }
 
     validate(state) {}
@@ -86,23 +87,12 @@ class Submit extends Component {
           <Input type="text" value={this.state.lastSeenLocation} onChange={this.handleInputChange} name="lastSeenLocation" id="lastSeenLocation" placeholder="ex. near Mundy Park in Burnaby" required />
         </FormGroup>;
 
-        photoFile = <FormGroup className="mt-4 mb-4">
-          <Label for="photo">Photo of the missing person/pet</Label>
-          <Input type="file" name="file" id="photo" />
-          <FormText color="muted">
-            Try to use the latest photo.
-          </FormText>
-        </FormGroup>
+        photoFile = <Label for="photo">Photo of the missing person/pet</Label>
       }
       else if(this.state.category == "Vehicle Crash" || this.state.category == "Other Incidents")
       {
-        photoFile = <FormGroup className="mt-4 mb-4">
-          <Label for="photo">Photo of the incident</Label>
-          <Input type="file" onChange={this.handleUploadFile} name="file" id="photo" />
-          <FormText color="muted">
-            Try to use the latest photo.
-          </FormText>
-        </FormGroup>
+        photoFile = <Label for="photo">Photo of the incident</Label>
+          
 
         incidentDate = <FormGroup>
           <Label for="incidentDate">Incident Date</Label>
@@ -159,7 +149,13 @@ class Submit extends Component {
           {incidentDate}
           {incidentTime}
           {incidentLocation}
-          {photoFile}
+          <FormGroup className="mt-4 mb-4">
+            {photoFile}
+            <Input type="file" onChange={this.handleUploadFile} name="file" id="photo" required />
+            <FormText color="muted">
+              Try to use the latest photo.
+            </FormText>
+          </FormGroup>
           <FormGroup>
             <Label for="description">Incident Description (optional)</Label>
             <Input type="textarea" value={this.state.description} onChange={this.handleInputChange} name="description" id="description" placeholder="Describe the Incident" />
