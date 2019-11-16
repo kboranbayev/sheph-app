@@ -1,5 +1,6 @@
 /* eslint-disable */
-import React, {Component} from 'react';
+import React, { Component } from 'react';
+import axios from "axios";
 import { Button, Form, FormGroup, Label, Input, FormText } from 'reactstrap';
 
 class Submit extends Component {
@@ -11,15 +12,17 @@ class Submit extends Component {
         name: '',
         category: 'Missing Reports',
         description: '',
-        picture: '',
         lastSeenDateTime: '',
         lastSeenLocation: '',
         incidentDate: '',
         incidentTime: '',
-        incidentLocation: ''
+        incidentLocation: '',
+        file: null,
+        filename: ''
       };
       
       this.handleInputChange = this.handleInputChange.bind(this);
+      this.handleUploadFile = this.handleUploadFile.bind(this);
       this.handleSubmit = this.handleSubmit.bind(this);
     }
 
@@ -33,30 +36,36 @@ class Submit extends Component {
       });
     }
 
+    handleUploadFile(event) {
+      let file = event.target.files[0];
+      if (file) this.setState({ file: event.target.files[0]});
+    }
+  
     handleSubmit(event)
     {
-      fetch('http://localhost:3000/blahblah', {
-        method: 'POST',
-        headers: {
-          Accept: 'application/json',
-          'Content-Type': 'application/json',
-        },
-        body: JSON.stringify({
-          email: this.state.email,
-          name: this.state.name,
-          category: this.state.category,
-          description: this.state.description,
-          lastSeenDateTime: this.state.lastSeenDateTime,
-          lastSeenLocation: this.state.lastSeenLocation,
-          incidentDate: this.state.incidentDate,
-          incidentTime: this.state.incidentTime,
-          incidentLocation: this.state.incidentLocation,
-        }),
+      const errors = this.validate(this.state);
+      const data = new FormData();
+      data.append('file', this.state.file);
+      data.append('filename', this.state.file.name);
+      data.append('name', this.state.name);
+      data.append('email', this.state.email);
+      data.append('description', this.state.description);
+      data.append('category', this.state.category);
+      data.append('lastSeenDateTime', this.state.lastSeenDateTime);
+      data.append('lastSeenLocation', this.state.lastSeenLocation);
+      data.append('incidentTime', this.state.incidentTime);
+      data.append('incidentDate', this.state.incidentDate);
+      data.append('incidentLocation', this.state.incidentLocation);
+    
+      axios.post(`/server/add`, data).then((res) => {
+        console.log(res);
       });
       
       event.preventDefault();
     }
 
+    validate(state) {}
+  
     render() {
 
       let lastSeenDateTime;
@@ -89,7 +98,7 @@ class Submit extends Component {
       {
         photoFile = <FormGroup className="mt-4 mb-4">
           <Label for="photo">Photo of the incident</Label>
-          <Input type="file" name="file" id="photo" />
+          <Input type="file" onChange={this.handleUploadFile} name="file" id="photo" />
           <FormText color="muted">
             Try to use the latest photo.
           </FormText>
