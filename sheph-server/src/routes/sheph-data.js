@@ -1,6 +1,6 @@
 import express from "express";
 import path from "path";
-import Data from "../models/Data";
+import Entry from "../models/Entry";
 import parseErrors from "../utils/parseErrors";
 
 const mongoose = require("mongoose");
@@ -30,6 +30,8 @@ conn.once("open", () => {
   gfs.collection("uploads");
 });
 
+let imageIdData = null;
+
 const storage = new GridFsStorage({
   url: MONGODB_URI,
   file: (req, file) => {
@@ -38,8 +40,8 @@ const storage = new GridFsStorage({
         if (err) {
           return reject(err);
         }
-        // const filename = buf.toString("hex") + path.extname(file.originalname);
-        const filename = file.originalname;
+        const filename = buf.toString("hex") + path.extname(file.originalname);
+        imageIdData = filename;
         const fileInfo = {
           filename,
           bucketName: "uploads"
@@ -92,8 +94,49 @@ router.get("/image/:filename", (req, res) => {
   });
 });
 
+// search by name
+// returns data based on the name
+router.get("/entries/name/:name", (req, res) => {
+  Entry.findOne({ name: req.params.name }, (err, data) => {
+    if (!data || data.length === 0) {
+      return res.status(404).json({ err: "no data exist by this name" });
+    }
+    return res.status(200).json({ data });
+  });
+});
+
+// search by category
+// returns data in array of objects based on this category
+router.get("/entries/category/:category", (req, res) => {
+  Entry.find({ category: req.params.category }, (err, data) => {
+    if (!data || data.length === 0) {
+      return res.status(404).json({ err: "no data exist by this category" });
+    }
+    return res.status(200).json({ data });
+  });
+});
+
+// search by description
+// returns data in array of objects based on this description
+router.get("/entries/description/:description", (req, res) => {
+  Entry.find({ description: req.params.description }, (err, data) => {
+    if (!data || data.length === 0) {
+      return res.status(404).json({ err: "no data contains this description" });
+    }
+    return res.status(200).json({ data });
+  });
+});
+
+router.get("/entries", (req, res) => {
+  Entry.find({}, (err, data) => {
+    if (!data || data.length === 0) {
+      res.status(404).json({ err: "no data exist" });
+    }
+    res.status(200).json({ data });
+  });
+});
+
 router.post("/add", upload.single("file"), (req, res) => {
-  console.log(JSON.stringify(req.body));
   const {
     category,
     description,
@@ -106,7 +149,7 @@ router.post("/add", upload.single("file"), (req, res) => {
     incidentLocation
   } = req.body;
 
-  const info = new Data({
+  const info = new Entry({
     category,
     description,
     name,
@@ -114,24 +157,14 @@ router.post("/add", upload.single("file"), (req, res) => {
     lastSeenLocation,
     incidentDate,
     incidentTime,
-    incidentLocation
+    incidentLocation,
+    picture: imageIdData
   });
 
   info
     .save()
     .then(record => res.status(200).json({ uploaded: record }))
     .catch(err => res.status(400).json({ errors: parseErrors(err.errors) }));
-
-  gfs.files.findOneAndUpdate(
-    { filename: req.body.filename },
-    { $set: { data: info } },
-    { upsert: true },
-    (err, doc) => {
-      if (err) console.error(err.error);
-      console.log(doc);
-    }
-  );
-
   // axios.post(email)
 });
 

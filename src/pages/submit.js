@@ -1,6 +1,7 @@
 /* eslint-disable */
 import React, { Component } from 'react';
 import axios from "axios";
+import PropTypes from "prop-types";
 import { Button, Form, FormGroup, Label, Input, FormText } from 'reactstrap';
 
 class Submit extends Component {
@@ -59,7 +60,8 @@ class Submit extends Component {
       data.append('incidentLocation', this.state.incidentLocation);
       
       axios.post(`/server/add`, data).then((res) => {
-        console.log(res);
+        // res need to handle for errors
+        this.props.history.push("/");
       });
       
       
@@ -166,4 +168,10 @@ class Submit extends Component {
     }
   }
   
+Submit.propTypes = {
+  history: PropTypes.shape({
+    push: PropTypes.func.isRequired
+  }).isRequired
+}
+
   export default Submit;

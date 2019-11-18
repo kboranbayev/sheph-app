@@ -2,11 +2,14 @@ import mongoose from "mongoose";
 
 const schema = new mongoose.Schema(
   {
-    name: {
+    picture: {
       type: String,
-      required: true,
       index: true,
       unique: true
+    },
+    name: {
+      type: String,
+      required: true
     },
     description: {
       type: String
@@ -34,4 +37,4 @@ const schema = new mongoose.Schema(
   { timestamps: true }
 );
 
-export default mongoose.model("data", schema);
+export default mongoose.model("entries", schema);
