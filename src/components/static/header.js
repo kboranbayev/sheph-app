@@ -11,7 +11,7 @@ import {
 import {Link} from 'react-router-dom';
 import PropTypes from 'prop-types';
 
-import logo from '../../resources/images/sheph4.png';
+import logo from '../../resources/images/white-sheph.png';
 
 
 
@@ -25,7 +25,7 @@ const Header = (props) => {
     <div>
       <Navbar style={{backgroundColor: props.backColor}} light brand={logo} expand="md">
         
-        <NavbarBrand tag={Link} to="/" style={{color: 'white', fontWeight: '900'}}><img src={logo} alt="logo" height="64" width="64"></img>Sheph</NavbarBrand>
+        <NavbarBrand tag={Link} to="/" style={{color: 'white', fontWeight: '900'}}><img src={logo} alt="logo" height="50" width="50"/> Sheph</NavbarBrand>
         <NavbarToggler onClick={toggle} style={{backgroundColor: 'white'}} />
         <Collapse isOpen={isOpen} navbar>
           
@@ -47,11 +47,11 @@ const Header = (props) => {
       </Navbar>
     </div>
   );
-}
+};
 
 Header.propTypes =
 {
   backColor: PropTypes.string.isRequired
-}
+};
 
 export default Header;
