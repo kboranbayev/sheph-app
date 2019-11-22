@@ -136,6 +136,11 @@ router.get("/entries", (req, res) => {
   });
 });
 
+router.post("/entry/contact", (req, res) => {
+  // axios.post(email,message,filename)
+  res.status(200).json({ messageStatus: "Message Sent" });
+});
+
 router.post("/add", upload.single("file"), (req, res) => {
   const {
     category,
