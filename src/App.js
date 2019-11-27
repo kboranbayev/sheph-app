@@ -12,7 +12,7 @@ class App extends Component {
       <BrowserRouter>
         <div>
           <Header backColor={'#0062b3'} />
-          <div id="hi" className="main-content-container container-fluid px-4">
+          <div className="main-content-container container-fluid px-4">
             <Router />
           </div>
           <Footer />
