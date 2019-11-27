@@ -11,10 +11,7 @@ import {
 import {Link} from 'react-router-dom';
 import PropTypes from 'prop-types';
 
-import logo from '../../resources/images/sheph4.png';
-
-
-
+import logo from '../../resources/images/sheph-w-bg.png';
 
 const Header = (props) => {
   const [isOpen, setIsOpen] = useState(false);

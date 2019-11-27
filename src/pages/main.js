@@ -38,7 +38,7 @@ class Main extends Component {
 
     return (
       <div>
-        <h1>Main Page</h1>
+        <h1 className="page_title">Active Posts</h1>
         {entries}
         <div />
       </div>

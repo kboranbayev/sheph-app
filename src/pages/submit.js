@@ -129,7 +129,7 @@ class Submit extends Component {
 
       return (
         <Form className="mt-5" onSubmit={this.handleSubmit}>
-          <h1 className="mb-4">Submit an Incident</h1>
+          <h1 className="mb-4 page_title">Submit an Incident</h1>
           <FormGroup>
             <Label for="reporterName">Name</Label>
             <Input type="text" value={this.state.name} onChange={this.handleInputChange} name="name" id="reporterName" placeholder="" required />
