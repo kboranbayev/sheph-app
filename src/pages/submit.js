@@ -37,7 +37,6 @@ class Submit extends Component {
         [name]: value
       });
     }
-    
 
     handleUploadFile(event) {
       let file = event.target.files[0];
@@ -83,6 +82,7 @@ class Submit extends Component {
 
     validate(state) {}
   
+    // Render form
     render() {
 
       let lastSeenDateTime;
