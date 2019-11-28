@@ -27,20 +27,24 @@ class Main extends Component {
     return `http://localhost:5000/server/image/${picture}`;
   }
 
-  // deleteEntries() {
-  //   let entries = Object.keys(this.state).map((key) => {
-  //     if ((Date.now() - new Date(this.state[key].createdAt)) >= six_days_ms)
-  //       axios.delete('/server/delete', this.state[key]).then(res => {
-          
-  //       });
-  //   });
-  //    // console.log((Date.now() - new Date(this.state[1].createdAt)) >= six_days_ms);
-  // }
+  deleteEntries() {
+    let entries = Object.keys(this.state).map((key) => {
+      const data;
+      // If today's date minus entry create date is equal or longer than 6 days
+      if ((Date.now() - new Date(this.state[key].createdAt)) >= six_days_ms)
+        //data = new FormData();
+        //data.append('entry', this.state[key]);
+        axios.delete('/server/delete/entry', the.state[key]).then((res) => {
+          console.log(res);
+          console.log(res.data);
+        });
+    });
+  }
 
   render() {
     let entries = null;
     if (Object.keys(this.state).length !== 0) {
-     // this.deleteEntries();
+      this.deleteEntries();
       entries = Object.keys(this.state).reverse().map((key) => {
         const url = "/entry_detail";
         return (
