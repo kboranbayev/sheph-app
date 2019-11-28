@@ -1,6 +1,6 @@
 /* eslint-disable */
 import React, { Component } from "react";
-import { Card, CardImg, CardText, CardBody, CardTitle, CardSubtitle, Button, Row, Col} from "reactstrap";
+import { Card, CardImg, CardText, CardBody, CardTitle, CardSubtitle, Button, Row, Col, Input} from "reactstrap";
 import { Link, Route } from 'react-router-dom';
 import axios from "axios";
 import PropTypes from "prop-types";
@@ -13,6 +13,9 @@ class Main extends Component {
     this.state = {};
     axios.get("/server/entries", null).then(res => {
       this.setState(res.data.data);
+      let currDate = Date.parse(res.data.data[15].createdAt);
+      //console.log(res.data.data[15].createdAt);
+      console.log(new Date(currDate));
     });
 
     Main.handleDisplayPicture = Main.handleDisplayPicture.bind(this);

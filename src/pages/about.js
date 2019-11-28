@@ -39,7 +39,7 @@ class About extends Component {
             <br/>
             <h4 style={{color: 'grey'}}>Alex Song</h4>
             <br/>
-            <p style={{fontStyle: 'italic'}}>"Network guy!"</p>
+            <p style={{fontStyle: 'italic'}}>I try to make things look good... #TSMWIN</p>
             <br/>
           </div>
           <div style={{backgroundColor:'rgba(0,0,0,0.10)'}}>
