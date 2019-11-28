@@ -17,11 +17,7 @@ code {
   width: 100%;
   padding: 10px;
   text-align: center;
-  background-image: linear-gradient(to right, rgba(255,0,0,0), rgb(92, 108, 255), rgba(255,0,0,0), rgb(92, 108, 255), rgba(255,0,0,0));
-}
-
-.main-content-container {
-  background-image: url("resources/images/background.png");
+  /* background-image: linear-gradient(to right, rgba(255,0,0,0), rgb(92, 108, 255), rgba(255,0,0,0), rgb(92, 108, 255), rgba(255,0,0,0)); */
 }
 
 #footer {
@@ -29,4 +25,21 @@ code {
   bottom: 0;
   width: 100%;
   height: 2.5rem;            /* Footer height */
+}
+
+#post_name {
+  font-weight: bold;
+  font-size: 25px;
+}
+
+#post_cat {
+  font-style: italic;
+}
+
+#post_img {
+  height: 300px;
+  display: block;
+  margin-left: auto;
+  margin-right: auto;
+  width: auto;
 }

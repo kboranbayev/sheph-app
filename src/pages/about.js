@@ -19,7 +19,7 @@ class About extends Component {
         </p>
         <br/>
         <h3 style={{color: 'black'}}>
-          we brought Sheph!
+          We brought Sheph!
         </h3>
         <br/>
         <p className="text-monospace">

@@ -9,8 +9,6 @@ import shephData from "./routes/sheph-data";
 
 app.use(cors());
 
-
-
 app.use(bodyParser.json());
 
 app.get("/", (req, res) => {
