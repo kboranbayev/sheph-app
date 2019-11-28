@@ -177,4 +177,21 @@ router.post("/add", upload.single("file"), (req, res) => {
   // axios.post(email)
 });
 
+router.post("/delete/entry", (req, res) => {
+  console.log(req.body);
+  Entry.findOneAndDelete(
+    {
+      name: req.body.name,
+      description: req.body.description,
+      category: req.body.description
+    },
+    (err, data) => {
+      if (!data || data.length === 0) {
+        return res.status(404).json({ err: "no data found to delete" });
+      }
+      return res.status(200).json({ data });
+    }
+  );
+});
+
 export default router;
