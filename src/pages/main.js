@@ -1,11 +1,13 @@
 /* eslint-disable */
 import React, { Component } from "react";
-import { Card, CardImg, CardText, CardBody, CardTitle, CardSubtitle, Button, Row, Col} from "reactstrap";
+import { Card, CardImg, CardText, CardBody, CardTitle, CardSubtitle, Button, Row, Col, Input} from "reactstrap";
 import { Link, Route } from 'react-router-dom';
 import axios from "axios";
 import PropTypes from "prop-types";
 import Entry from "../components/form/entry-detail";
 import { cpus } from "os";
+
+const six_days_ms = 518400000;
 
 class Main extends Component {
   constructor(props) {
@@ -13,6 +15,9 @@ class Main extends Component {
     this.state = {};
     axios.get("/server/entries", null).then(res => {
       this.setState(res.data.data);
+      let currDate = Date.parse(res.data.data[0].createdAt);
+      //console.log(res.data.data[15].createdAt);
+      //console.log(Date.now() - currDate);
     });
 
     Main.handleDisplayPicture = Main.handleDisplayPicture.bind(this);
@@ -22,9 +27,20 @@ class Main extends Component {
     return `http://localhost:5000/server/image/${picture}`;
   }
 
+  // deleteEntries() {
+  //   let entries = Object.keys(this.state).map((key) => {
+  //     if ((Date.now() - new Date(this.state[key].createdAt)) >= six_days_ms)
+  //       axios.delete('/server/delete', this.state[key]).then(res => {
+          
+  //       });
+  //   });
+  //    // console.log((Date.now() - new Date(this.state[1].createdAt)) >= six_days_ms);
+  // }
+
   render() {
     let entries = null;
     if (Object.keys(this.state).length !== 0) {
+     // this.deleteEntries();
       entries = Object.keys(this.state).reverse().map((key) => {
         const url = "/entry_detail";
         return (

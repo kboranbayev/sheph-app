@@ -141,6 +141,10 @@ router.post("/entry/contact", (req, res) => {
   res.status(200).json({ messageStatus: "Message Sent" });
 });
 
+// router.delete("/delete", (req, res) => {
+
+// });
+
 router.post("/add", upload.single("file"), (req, res) => {
   const {
     category,
