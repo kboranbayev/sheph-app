@@ -14,10 +14,10 @@ class Main extends Component {
       this.setState(res.data.data);
     });
 
-    this.handleDisplayPicture = this.handleDisplayPicture.bind(this);
+    Main.handleDisplayPicture = Main.handleDisplayPicture.bind(this);
   }
 
-  handleDisplayPicture(picture) {
+  static handleDisplayPicture(picture) {
     return `http://localhost:5000/server/image/${picture}`;
   }
 
@@ -27,8 +27,10 @@ class Main extends Component {
       entries = Object.keys(this.state).map((key) => {
         const url = "/entry_detail";
         return (
+          <div className="col-4">
+            <br/>
             <Card key={key}>
-              <CardImg top height="300" src={this.handleDisplayPicture(this.state[key].picture)} alt="Card image cap" />
+              <CardImg top height="300" src={Main.handleDisplayPicture(this.state[key].picture)} alt="Card image cap" />
               <CardBody>
               <CardTitle>{this.state[key].name}</CardTitle>
               <CardSubtitle>{this.state[key].category}</CardSubtitle>
@@ -38,6 +40,8 @@ class Main extends Component {
               </Button>
               </CardBody>
             </Card>
+            <br/>
+          </div>
         );
       });
     }

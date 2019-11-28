@@ -39,21 +39,32 @@ class About extends Component {
             <br/>
             <h4 style={{color: 'grey'}}>Alex Song</h4>
             <br/>
-            <p>Hello!</p>
+            <p style={{fontStyle: 'italic'}}>"Network guy!"</p>
             <br/>
           </div>
           <div style={{backgroundColor:'rgba(0,0,0,0.10)'}}>
             <br/>
             <h4 style={{color: 'grey'}}>Konstantin Boyarinov</h4>
             <br/>
-            <p>Hi!</p>
+            <p style={{fontStyle: 'italic'}}>"Testing guy!"</p>
             <br/>
           </div>
           <div style={{backgroundColor:'rgba(0,0,0,0.10)'}}>
             <br/>
             <h4 style={{color: 'grey'}}>Kuanysh Boranbayev</h4>
             <br/>
-            <p>Sure!</p>
+            <p style={{fontStyle: 'italic'}}>"Database guy!"</p>
+            <br/>
+          </div>
+        </div>
+        <br/>
+        <br/>
+        <div className="flex-column">
+          <div style={{backgroundColor:'rgba(0,0,0,0.10)'}}>
+            <br/>
+            <h4 style={{color: 'grey'}}>Parm Dhaliwal</h4>
+            <br/>
+            <p style={{fontStyle: 'italic'}}>"Some guy!"</p>
             <br/>
           </div>
         </div>
