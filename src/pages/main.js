@@ -29,8 +29,8 @@ class Main extends Component {
         const url = "/entry_detail";
         return (
             <Row className="mt-5">
-              <Col xxl="5" xl="4" lg="3" md="1" sm="1"></Col>
-              <Col xxl="2" xl="4" lg="6" md="10" sm="10">
+              <Col xxl="5" xl="4" lg="3" md="2" sm="2"></Col>
+              <Col xxl="2" xl="4" lg="6" md="8" sm="8">
                 <Card key={key}>
                   <CardImg top height="300" src={Main.handleDisplayPicture(this.state[key].picture)} alt="Card image cap" />
                   <CardBody>
@@ -43,7 +43,7 @@ class Main extends Component {
                   </CardBody>
                 </Card>
               </Col>
-              <Col xxl="5" xl="4" lg="3" md="1" sm="1"></Col>
+              <Col xxl="5" xl="4" lg="3" md="2" sm="2"></Col>
            </Row>
         );
       });
