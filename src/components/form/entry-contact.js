@@ -51,7 +51,7 @@ class EntryContact extends React.Component {
     return (
       <Form className="mt-5" onSubmit={this.handleSubmit}>
         <FormGroup>
-          <Label for="message">Message</Label>
+          <Label for="message"><b>Message</b></Label>
           <Input
             type="textarea"
             value={this.state.data.message}
@@ -62,7 +62,7 @@ class EntryContact extends React.Component {
           />
         </FormGroup>
         <FormGroup>
-          <Label for="entryEmail">Contact Email</Label>
+          <Label for="entryEmail"><b>Contact Email</b></Label>
           <Input
             type="email"
             value={this.state.data.email}
