@@ -13,16 +13,10 @@ code {
 }
 
 .page_title {
-  margin: auto;
-  width: 100%;
-  padding: 10px;
   text-align: center;
-  background-image: linear-gradient(to right, rgba(255,0,0,0), rgb(92, 108, 255), rgba(255,0,0,0), rgb(92, 108, 255), rgba(255,0,0,0));
 }
 
-.main-content-container {
-  background-image: url("resources/images/background.png");
-}
+
 
 #footer {
   position: absolute;
