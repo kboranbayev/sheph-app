@@ -1,18 +1,17 @@
-/* disable-eslint */
 import React from "react";
 import PropTypes from "prop-types";
 import { Button, Form, FormGroup, Label, Input } from "reactstrap";
 import { PushSpinner } from "react-spinners-kit";
-import Submit from "../../pages/submit";
 
 class EntryContact extends React.Component {
   constructor(props) {
     super(props);
+    const { filename } = this.props;
     this.state = {
       data: {
         email: "",
         message: "",
-        filename: this.props.filename
+        filename
       },
       errors: "",
       loading: false
@@ -20,6 +19,22 @@ class EntryContact extends React.Component {
 
     this.handleInputChange = this.handleInputChange.bind(this);
   }
+
+  handleSubmit = e => {
+    const { data } = this.state;
+    const { props } = this;
+    e.preventDefault();
+    const errors = this.validate(this.state);
+    if (Object.keys(errors).length === 0) {
+      this.setState({ loading: true });
+      props.submit(data);
+    }
+  };
+
+  validate = state => {
+    const errors = {};
+    return errors;
+  };
 
   handleInputChange(event) {
     const { target } = event;
@@ -33,28 +48,15 @@ class EntryContact extends React.Component {
     });
   }
 
-  handleSubmit = e => {
-    e.preventDefault();
-    const errors = this.validate(this.state);
-    if (Object.keys(errors).length === 0) {
-      this.setState({ loading: true });
-      this.props.submit(this.state.data);
-    }
-  };
-
-  validate = state => {
-    const errors = {};
-    return errors;
-  };
-
   render() {
+    const { data, loading } = this.state;
     return (
       <Form className="mt-5" onSubmit={this.handleSubmit}>
         <FormGroup>
           <Label for="message">Message</Label>
           <Input
             type="textarea"
-            value={this.state.data.message}
+            value={data.message}
             onChange={this.handleInputChange}
             name="message"
             id="message"
@@ -65,7 +67,7 @@ class EntryContact extends React.Component {
           <Label for="entryEmail">Contact Email</Label>
           <Input
             type="email"
-            value={this.state.data.email}
+            value={data.email}
             onChange={this.handleInputChange}
             name="email"
             id="entryEmail"
@@ -74,12 +76,8 @@ class EntryContact extends React.Component {
           />
         </FormGroup>
         <Button className="mt-4" color="primary">
-          {this.state.loading ? (
-            <PushSpinner
-              size={30}
-              color="#686769"
-              loading={this.state.loading}
-            />
+          {loading ? (
+            <PushSpinner size={30} color="#686769" loading />
           ) : (
             <span>Submit</span>
           )}
@@ -90,7 +88,8 @@ class EntryContact extends React.Component {
 }
 
 EntryContact.propTypes = {
-  submit: PropTypes.func.isRequired
+  submit: PropTypes.func.isRequired,
+  filename: PropTypes.string.isRequired
 };
 
 export default EntryContact;
