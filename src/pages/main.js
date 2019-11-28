@@ -12,7 +12,6 @@ class Main extends Component {
     super(props);
     this.state = {};
     axios.get("/server/entries", null).then(res => {
-      console.log(res.data.data[0].createdAt > res.data.data[1].createdAt);
       this.setState(res.data.data);
     });
 
@@ -26,7 +25,7 @@ class Main extends Component {
   render() {
     let entries = null;
     if (Object.keys(this.state).length !== 0) {
-      entries = Object.keys(this.state).map((key) => {
+      entries = Object.keys(this.state).reverse().map((key) => {
         const url = "/entry_detail";
         return (
             <Row className="mt-5">
@@ -35,9 +34,9 @@ class Main extends Component {
                 <Card key={key}>
                   <CardImg top height="300" src={Main.handleDisplayPicture(this.state[key].picture)} alt="Card image cap" />
                   <CardBody>
-                  <CardTitle>{this.state[key].name}</CardTitle>
-                  <CardSubtitle>{this.state[key].category}</CardSubtitle>
-                  <CardText>{this.state[key].description}</CardText>
+                  <CardTitle id="post_name">{this.state[key].name}</CardTitle>
+                  <CardSubtitle id="post_cat">{this.state[key].category}</CardSubtitle>
+                  <CardText id="post_desc">{this.state[key].description}</CardText>
                   <Button>
                     <Link to={{ pathname: "/entry_detail", state: this.state[key] }} style={{ color: 'white' }}>Details</Link>
                   </Button>
