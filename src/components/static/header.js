@@ -50,11 +50,6 @@ Sheph
               </NavLink>
             </NavItem>
             <NavItem>
-              <NavLink tag={Link} to="/incident-map" style={{ color: "white" }}>
-                Map
-              </NavLink>
-            </NavItem>
-            <NavItem>
               <NavLink tag={Link} to="/submit" style={{ color: "white" }}>
                 Submit
               </NavLink>

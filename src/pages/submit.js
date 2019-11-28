@@ -1,8 +1,8 @@
 /* eslint-disable */
-import React, { Component } from 'react';
+import React, { Component, useState } from 'react';
 import axios from "axios";
 import PropTypes from "prop-types";
-import { Button, Form, FormGroup, Label, Input, FormText } from 'reactstrap';
+import { Button, Form, FormGroup, Label, Input, FormText, UncontrolledAlert, Alert } from 'reactstrap';
 
 class Submit extends Component {
     constructor(props)
@@ -25,6 +25,7 @@ class Submit extends Component {
       this.handleInputChange = this.handleInputChange.bind(this);
       this.handleUploadFile = this.handleUploadFile.bind(this);
       this.handleSubmit = this.handleSubmit.bind(this);
+      this.errorModal = '';
     }
 
     handleInputChange(event) {
@@ -36,11 +37,13 @@ class Submit extends Component {
         [name]: value
       });
     }
+    
 
     handleUploadFile(event) {
       let file = event.target.files[0];
       if (file) this.setState({ file: event.target.files[0]});
     }
+
   
     handleSubmit(event)
     {
@@ -60,8 +63,19 @@ class Submit extends Component {
       data.append('incidentLocation', this.state.incidentLocation);
       
       axios.post(`/server/add`, data).then((res) => {
-        // res need to handle for errors
-        this.props.history.push("/");
+        if(res.status == 200)
+        {
+          window.scrollTo(0, 0);
+          this.props.history.push("/submission-successful");
+          
+        }
+      })
+      .catch((error)=> {
+        this.errorModal = <Alert color="danger" fade={false}>
+          { "Error " + error.response.status + ": " + error.response.statusText + ". Please try again later." }
+        </Alert>
+        this.forceUpdate();
+        window.scrollTo(0, 0);
       });
       
       
@@ -128,7 +142,9 @@ class Submit extends Component {
       }
 
       return (
+        
         <Form className="mt-5" onSubmit={this.handleSubmit}>
+          {this.errorModal}
           <h1 className="mb-4">Submit an Incident</h1>
           <FormGroup>
             <Label for="reporterName">Name</Label>
