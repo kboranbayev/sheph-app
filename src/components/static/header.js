@@ -11,10 +11,9 @@ import {
 import { Link, Route } from "react-router-dom";
 import PropTypes from "prop-types";
 import Entry from "../form/entry-detail";
+import logo from '../../resources/images/sheph-w-bg.png';
 
-import logo from "../../resources/images/white-sheph.png";
-
-const Header = props => {
+const Header = (props) => {
   const [isOpen, setIsOpen] = useState(false);
 
   const toggle = () => setIsOpen(!isOpen);
