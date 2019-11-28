@@ -50,7 +50,7 @@ class Main extends Component {
     }
 
     return (
-      <div>
+      <div className="mb-5">
         <h1 className="page_title mt-5">Active Posts</h1>
         {entries}
         <div />
