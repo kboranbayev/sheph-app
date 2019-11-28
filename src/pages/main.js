@@ -12,7 +12,6 @@ class Main extends Component {
     super(props);
     this.state = {};
     axios.get("/server/entries", null).then(res => {
-      console.log(res.data.data[0].createdAt > res.data.data[1].createdAt);
       this.setState(res.data.data);
     });
 
