@@ -6,7 +6,11 @@ import {
   NavbarBrand,
   Nav,
   NavItem,
-  NavLink
+  NavLink,
+  Button,
+  Form,
+  FormGroup,
+  Input
 } from "reactstrap";
 import { Link, Route } from "react-router-dom";
 import PropTypes from "prop-types";
@@ -38,6 +42,12 @@ Sheph
         <NavbarToggler onClick={toggle} style={{ backgroundColor: "white" }} />
         <Collapse isOpen={isOpen} navbar>
           <Nav className="ml-auto" navbar>
+          <Form inline>
+            <FormGroup>
+              <Input type="search" name="search" id="searchBar" placeholder="Search a name..." />
+            </FormGroup>
+            <Button color="success">Submit</Button>
+          </Form>
             <NavItem>
               <NavLink tag={Link} to="/" style={{ color: "white" }}>
                 Browse
@@ -54,6 +64,7 @@ Sheph
               </NavLink>
             </NavItem>
           </Nav>
+
         </Collapse>
       </Navbar>
       <Route path="/entry_detail" component={Entry} />

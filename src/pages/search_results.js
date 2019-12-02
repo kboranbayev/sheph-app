@@ -1,16 +1,15 @@
 /* eslint-disable */
 import React, { Component } from "react";
-import { Card, CardImg, CardText, CardBody, CardTitle, CardSubtitle, Container, Button, Row, Col, Badge, Input} from "reactstrap";
+import { Card, CardImg, CardText, CardBody, CardTitle, CardSubtitle, Button, Row, Col, Badge} from "reactstrap";
 import { Link, Route } from 'react-router-dom';
 import axios from "axios";
 import PropTypes from "prop-types";
 import Entry from "../components/form/entry-detail";
 import { cpus } from "os";
 
-const expiry_date_in_ms = 518400000; // 6 Day expiry
 const one_day_in_ms = 86400000;
 
-class Main extends Component {
+class SearchResults extends Component {
   constructor(props) {
     super(props);
     this.state = {};
@@ -22,24 +21,7 @@ class Main extends Component {
   }
 
   static handleDisplayPicture(picture) {
-    return `http://35.166.123.68/server/image/${picture}`;
-  }
-
-  deleteEntries() {
-    const data = new FormData();
-    if (Object.keys(this.state).length !== 0) {
-      let entries = Object.keys(this.state).map((key) => {
-        // If today's date minus entry create date is equal or longer than 6 days
-        if ((Date.now() - new Date(this.state[key].createdAt)) >= expiry_date_in_ms) {
-          //data.append('entry', this.state[key]);
-          console.log(this.state[key]);
-          axios.post("/server/delete/entry", this.state[key]).then((res) => {
-            console.log(res);
-            console.log(res.data);
-          });
-        }
-      });
-    }
+    return `http://localhost:5000/server/image/${picture}`;
   }
 
   // orders list of posts by most recent to oldest
@@ -57,20 +39,25 @@ class Main extends Component {
     return list;
   }
 
+  // Find entries with keyword
+  findEntries(list) {
+
+    return list;
+  }
+
   // Check if a post is a day old or not, if yes, display New badge
   checkNew(post) {
     if ((Date.now() - Date.parse(post.createdAt)) <= one_day_in_ms)
       return true;
     return false;
   }
-
+  
   render() {
     let entries = null;
     let d = "";
 
     if (Object.keys(this.state).length !== 0) {
-      this.deleteEntries();
-      let entries_list = this.orderEntries(Object.values(this.state));
+      let entries_list = this.orderEntries(Object.values(findEntries(this.state)));
 
       entries = entries_list.map((key) => {
         const url = "/entry_detail";
@@ -78,9 +65,11 @@ class Main extends Component {
 
         if (this.checkNew(key)) {
           return (
-            <Col lg="4" md="6" xs="12">
-                <Card  xxl="5" xl="4" lg="3" md="2" sm="2">
-                  <CardImg top  height="300px" max-width="100%" src={Main.handleDisplayPicture(key.picture)} alt="Card image cap" />
+            <Row className="mt-5">
+              <Col xxl="5" xl="4" lg="3" md="2" sm="2"></Col>
+              <Col xxl="2" xl="4" lg="6" md="8" sm="8">
+                <Card>
+                  <CardImg top height="300" src={Main.handleDisplayPicture(key.picture)} alt="Card image cap" />
                   <CardBody>
                   <CardTitle id="post_name">{key.name} <Badge color="secondary">New</Badge></CardTitle>
                   <CardSubtitle id="post_cat">{key.category}</CardSubtitle>
@@ -93,7 +82,9 @@ class Main extends Component {
                   </CardBody>
                 </Card>
               </Col>
-          )
+              <Col xxl="5" xl="4" lg="3" md="2" sm="2"></Col>
+           </Row>
+          );
         } else {
           return (
               <Row className="mt-5">
@@ -121,19 +112,13 @@ class Main extends Component {
     }
 
     return (
-      <Container className="fluid">
-        <div className="mb-5">
-          <h1 className="page_title mt-5">Active Posts</h1>
-          <Row>
-            
-              {entries}
-            
-          </Row>
-          <div />
-        </div>
-      </Container>
+      <div className="mb-5">
+        <h1 className="page_title mt-5">Search Results</h1>
+        {entries}
+        <div />
+      </div>
     );
   }
 }
 
-export default Main;
+export default SearchResults;
