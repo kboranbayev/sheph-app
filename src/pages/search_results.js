@@ -7,10 +7,9 @@ import PropTypes from "prop-types";
 import Entry from "../components/form/entry-detail";
 import { cpus } from "os";
 
-const expiry_date_in_ms = 518400000; // 6 Day expiry
 const one_day_in_ms = 86400000;
 
-class Main extends Component {
+class SearchResults extends Component {
   constructor(props) {
     super(props);
     this.state = {};
@@ -23,21 +22,6 @@ class Main extends Component {
 
   static handleDisplayPicture(picture) {
     return `http://localhost:5000/server/image/${picture}`;
-  }
-
-  deleteEntries() {
-    const data = new FormData();
-    if (Object.keys(this.state).length !== 0) {
-      let entries = Object.keys(this.state).map((key) => {
-        // If today's date minus entry create date is equal or longer than 6 days
-        if ((Date.now() - new Date(this.state[key].createdAt)) >= expiry_date_in_ms) {
-          axios.post("http://localhost:5000/server/delete/entry", this.state[key]).then((res) => {
-            console.log(res);
-            console.log(res.data);
-          });
-        }
-      });
-    }
   }
 
   // orders list of posts by most recent to oldest
@@ -55,20 +39,25 @@ class Main extends Component {
     return list;
   }
 
+  // Find entries with keyword
+  findEntries(list) {
+
+    return list;
+  }
+
   // Check if a post is a day old or not, if yes, display New badge
   checkNew(post) {
     if ((Date.now() - Date.parse(post.createdAt)) <= one_day_in_ms)
       return true;
     return false;
   }
-
+  
   render() {
     let entries = null;
     let d = "";
 
     if (Object.keys(this.state).length !== 0) {
-      this.deleteEntries();
-      let entries_list = this.orderEntries(Object.values(this.state));
+      let entries_list = this.orderEntries(Object.values(findEntries(this.state)));
 
       entries = entries_list.map((key) => {
         const url = "/entry_detail";
@@ -124,7 +113,7 @@ class Main extends Component {
 
     return (
       <div className="mb-5">
-        <h1 className="page_title mt-5">Active Posts</h1>
+        <h1 className="page_title mt-5">Search Results</h1>
         {entries}
         <div />
       </div>
@@ -132,4 +121,4 @@ class Main extends Component {
   }
 }
 
-export default Main;
+export default SearchResults;
