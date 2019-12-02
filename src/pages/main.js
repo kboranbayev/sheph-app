@@ -1,6 +1,6 @@
 /* eslint-disable */
 import React, { Component } from "react";
-import { Card, CardImg, CardText, CardBody, CardTitle, CardSubtitle, Button, Row, Col, Input} from "reactstrap";
+import { Card, CardImg, CardText, CardBody, CardTitle, CardSubtitle, Container, Button, Row, Col, Input} from "reactstrap";
 import { Link, Route } from 'react-router-dom';
 import axios from "axios";
 import PropTypes from "prop-types";
@@ -72,11 +72,9 @@ class Main extends Component {
         d = new Date(key.createdAt);
 
         return (
-            <Row className="mt-5">
-              <Col xxl="5" xl="4" lg="3" md="2" sm="2"></Col>
-              <Col xxl="2" xl="4" lg="6" md="8" sm="8">
-                <Card>
-                  <CardImg top height="300" src={Main.handleDisplayPicture(key.picture)} alt="Card image cap" />
+              <Col lg="4" md="6" xs="12">
+                <Card  xxl="5" xl="4" lg="3" md="2" sm="2">
+                  <CardImg top  height="300px" max-width="100%" src={Main.handleDisplayPicture(key.picture)} alt="Card image cap" />
                   <CardBody>
                   <CardTitle id="post_name">{key.name}</CardTitle>
                   <CardSubtitle id="post_cat">{key.category}</CardSubtitle>
@@ -89,18 +87,22 @@ class Main extends Component {
                   </CardBody>
                 </Card>
               </Col>
-              <Col xxl="5" xl="4" lg="3" md="2" sm="2"></Col>
-           </Row>
         );
       });
     }
 
     return (
-      <div className="mb-5">
-        <h1 className="page_title mt-5">Active Posts</h1>
-        {entries}
-        <div />
-      </div>
+      <Container className="fluid">
+        <div className="mb-5">
+          <h1 className="page_title mt-5">Active Posts</h1>
+          <Row>
+            
+              {entries}
+            
+          </Row>
+          <div />
+        </div>
+      </Container>
     );
   }
 }
