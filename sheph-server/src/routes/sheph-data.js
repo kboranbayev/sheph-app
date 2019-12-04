@@ -94,6 +94,10 @@ router.get("/image/:filename", (req, res) => {
   });
 });
 
+// router.get("/search/:name", (req, res) => {
+//   Entry.find({})
+// });
+
 // search by name
 // returns data based on the name
 router.get("/entries/name/:name", (req, res) => {
@@ -136,6 +140,10 @@ router.get("/entries", (req, res) => {
   });
 });
 
+// router.get("/search/:name", (req, res) => {
+//   Entry.find({})
+// });
+
 router.post("/entry/contact", (req, res) => {
   // axios.post(email,message,filename)
   res.status(200).json({ messageStatus: "Message Sent" });
@@ -174,14 +182,11 @@ router.post("/add", upload.single("file"), (req, res) => {
 });
 
 router.post("/delete/entry", (req, res) => {
-  console.log("delet");
-  console.log(req.body);
   Entry.findOneAndDelete(
     {
       name: req.body.name
     },
     (err, data) => {
-      console.log(data);
       if (!data || data.length === 0) {
         return res.status(200).json({ err: "no data found to delete" });
       }

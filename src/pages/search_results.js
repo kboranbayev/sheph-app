@@ -12,12 +12,18 @@ const one_day_in_ms = 86400000;
 class SearchResults extends Component {
   constructor(props) {
     super(props);
-    this.state = {};
+    this.state = {
+      search: ''
+    };
     axios.get("/server/entries", null).then(res => {
       this.setState(res.data.data);
     });
 
     Main.handleDisplayPicture = Main.handleDisplayPicture.bind(this);
+  }
+
+  handleSearch = (formModel) => {
+    this.setState({...formModel});
   }
 
   static handleDisplayPicture(picture) {
