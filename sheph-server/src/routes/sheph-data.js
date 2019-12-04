@@ -174,14 +174,11 @@ router.post("/add", upload.single("file"), (req, res) => {
 });
 
 router.post("/delete/entry", (req, res) => {
-  console.log("delet");
-  console.log(req.body);
   Entry.findOneAndDelete(
     {
       name: req.body.name
     },
     (err, data) => {
-      console.log(data);
       if (!data || data.length === 0) {
         return res.status(200).json({ err: "no data found to delete" });
       }

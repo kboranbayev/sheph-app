@@ -3,7 +3,7 @@ import React from "react";
 import PropTypes from "prop-types";
 import { Button, Form, FormGroup, Label, Input } from "reactstrap";
 import { PushSpinner } from "react-spinners-kit";
-import Submit from "../../pages/submit";
+//import Submit from "../../pages/submit";
 
 class EntryContact extends React.Component {
   constructor(props) {
