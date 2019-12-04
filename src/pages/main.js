@@ -74,7 +74,6 @@ class Main extends Component {
         const url = "/entry_detail";
         d = new Date(key.createdAt);
 
-
         if (this.checkNew(key)) {
           return (
             <Col lg="4" md="6" xs="12">

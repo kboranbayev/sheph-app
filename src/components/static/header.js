@@ -85,6 +85,7 @@ Sheph
               </NavLink>
             </NavItem>
           </Nav>
+
         </Collapse>
       </Navbar>
       <Route path="/entry_detail" component={Entry} />
