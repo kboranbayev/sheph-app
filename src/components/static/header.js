@@ -16,27 +16,6 @@ import { Link, Route } from "react-router-dom";
 import PropTypes from "prop-types";
 import Entry from "../form/entry-detail";
 import logo from '../../resources/images/sheph-w-bg.png';
-import axios from "axios";
-import App from "../../App";
-
-let search = '';
-
-const searchName = (event) => {
-  event.preventDefault();
-  const data = new FormData();
-  data.append('search', search);
-
-  axios.get('/server/search')
-    .then((res) => {
-      if (res.status == 200) {
-        this.props.history.push("http://localhost:5000/search-results?search=:name");
-      }
-    });
-}
-
-const onChange = (event) => {
-  search = event.target.value;
-}
 
 const Header = (props) => {
   const [isOpen, setIsOpen] = useState(false);
@@ -63,11 +42,11 @@ Sheph
         <NavbarToggler onClick={toggle} style={{ backgroundColor: "white" }} />
         <Collapse isOpen={isOpen} navbar>
           <Nav className="ml-auto" navbar>
-          <Form inline onSubmit={searchName}>
+          <Form inline action="/search-results">
             <FormGroup>
-              <Input type="search" name="search" id="searchBar" placeholder="Search a name..." onChange={onChange} />
+              <Input required type="search" name="search" id="searchBar" placeholder="Search a name..." />
             </FormGroup>
-            <Button color="success">Submit</Button>
+            <Button color="success">Search</Button>
           </Form>
             <NavItem>
               <NavLink tag={Link} to="/" style={{ color: "white" }}>

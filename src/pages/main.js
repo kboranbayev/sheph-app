@@ -1,6 +1,6 @@
 /* eslint-disable */
 import React, { Component } from "react";
-import { Card, CardImg, CardText, CardBody, CardTitle, CardSubtitle, Container, Button, Row, Col, Badge, Input} from "reactstrap";
+import { Card, CardImg, CardText, CardBody, CardTitle, CardSubtitle, Container, Button, Row, Col, Badge} from "reactstrap";
 import { Link, Route } from 'react-router-dom';
 import axios from "axios";
 import PropTypes from "prop-types";
@@ -79,40 +79,40 @@ class Main extends Component {
         if (this.checkNew(key)) {
           return (
             <Col lg="4" md="6" xs="12">
-                <Card  xxl="5" xl="4" lg="3" md="2" sm="2">
-                  <CardImg top  height="300px" max-width="100%" src={Main.handleDisplayPicture(key.picture)} alt="Card image cap" />
-                  <CardBody>
-                  <CardTitle id="post_name">{key.name} <Badge color="secondary">New</Badge></CardTitle>
-                  <CardSubtitle id="post_cat">{key.category}</CardSubtitle>
-                  <CardText id="post_desc">
-                    {key.description}<br/><br/><b>Created: </b>{d.toDateString() + ', ' + d.toLocaleTimeString()}
-                  </CardText>
-                  <Button>
-                    <Link to={{ pathname: "/entry_detail", state: key }} style={{ color: 'white' }}>Details</Link>
-                  </Button>
-                  </CardBody>
-                </Card>
-                <br/>
-              </Col>
+              <Card  xxl="5" xl="4" lg="3" md="2" sm="2">
+                <CardImg top  height="300px" max-width="100%" src={Main.handleDisplayPicture(key.picture)} alt="Card image cap" />
+                <CardBody>
+                <CardTitle id="post_name">{key.name} <Badge color="secondary">New</Badge></CardTitle>
+                <CardSubtitle id="post_cat">{key.category}</CardSubtitle>
+                <CardText id="post_desc">
+                  {key.description}<br/><br/><b>Created: </b>{d.toDateString() + ', ' + d.toLocaleTimeString()}
+                </CardText>
+                <Button>
+                  <Link to={{ pathname: "/entry_detail", state: key }} style={{ color: 'white' }}>Details</Link>
+                </Button>
+                </CardBody>
+              </Card>
+              <br/>
+            </Col>
           );
         } else {
           return (
             <Col lg="4" md="6" xs="12">
-            <Card  xxl="5" xl="4" lg="3" md="2" sm="2">
-              <CardImg top  height="300px" max-width="100%" src={Main.handleDisplayPicture(key.picture)} alt="Card image cap" />
-              <CardBody>
-              <CardTitle id="post_name">{key.name}</CardTitle>
-              <CardSubtitle id="post_cat">{key.category}</CardSubtitle>
-              <CardText id="post_desc">
-                {key.description}<br/><br/><b>Created: </b>{d.toDateString() + ', ' + d.toLocaleTimeString()}
-              </CardText>
-              <Button>
-                <Link to={{ pathname: "/entry_detail", state: key }} style={{ color: 'white' }}>Details</Link>
-              </Button>
-              </CardBody>
-            </Card>
-            <br/>
-          </Col>
+              <Card  xxl="5" xl="4" lg="3" md="2" sm="2">
+                <CardImg top  height="300px" max-width="100%" src={Main.handleDisplayPicture(key.picture)} alt="Card image cap" />
+                <CardBody>
+                <CardTitle id="post_name">{key.name}</CardTitle>
+                <CardSubtitle id="post_cat">{key.category}</CardSubtitle>
+                <CardText id="post_desc">
+                  {key.description}<br/><br/><b>Created: </b>{d.toDateString() + ', ' + d.toLocaleTimeString()}
+                </CardText>
+                <Button>
+                  <Link to={{ pathname: "/entry_detail", state: key }} style={{ color: 'white' }}>Details</Link>
+                </Button>
+                </CardBody>
+              </Card>
+              <br/>
+            </Col>
           );
         }
       });
@@ -123,9 +123,7 @@ class Main extends Component {
         <div className="mb-5">
           <h1 className="page_title mt-5">Active Posts</h1>
           <Row>
-            
-              {entries}
-            
+            {entries}
           </Row>
           <div />
         </div>

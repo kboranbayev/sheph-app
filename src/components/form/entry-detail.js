@@ -8,7 +8,7 @@ import EntryContact from "../form/entry-contact";
 class Entry extends Component {
 
     handleDisplayPicture(picture) {
-        return `http://localhost:5000/server/image/${picture}`;
+        return `http://35.166.123.68/server/image/${picture}`;
     }
     
     handleSubmit = data => {
@@ -19,7 +19,6 @@ class Entry extends Component {
 
     render() {
         const entry = this.props.location.state;
-        console.log(entry);
 
         if (entry.category === 'Missing Reports') {
             return (
