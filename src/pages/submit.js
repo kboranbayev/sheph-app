@@ -43,9 +43,7 @@ class Submit extends Component {
       if (file) this.setState({ file: event.target.files[0]});
     }
 
-  
-    handleSubmit(event)
-    {
+    handleSubmit(event) {
       event.preventDefault();
       const errors = this.validate(this.state);
       const data = new FormData();
@@ -62,11 +60,9 @@ class Submit extends Component {
       data.append('incidentLocation', this.state.incidentLocation);
       
       axios.post(`/server/add`, data).then((res) => {
-        if(res.status == 200)
-        {
+        if(res.status == 200) {
           window.scrollTo(0, 0);
           this.props.history.push("/submission-successful");
-          
         }
       })
       .catch((error)=> {
@@ -76,8 +72,6 @@ class Submit extends Component {
         this.forceUpdate();
         window.scrollTo(0, 0);
       });
-      
-      
     }
 
     validate(state) {}

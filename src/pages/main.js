@@ -92,29 +92,27 @@ class Main extends Component {
                   </Button>
                   </CardBody>
                 </Card>
+                <br/>
               </Col>
           );
         } else {
           return (
-              <Row className="mt-5">
-                <Col xxl="5" xl="4" lg="3" md="2" sm="2"></Col>
-                <Col xxl="2" xl="4" lg="6" md="8" sm="8">
-                  <Card>
-                    <CardImg top height="300" src={Main.handleDisplayPicture(key.picture)} alt="Card image cap" />
-                    <CardBody>
-                      <CardTitle id="post_name">{key.name}</CardTitle>
-                      <CardSubtitle id="post_cat">{key.category}</CardSubtitle>
-                      <CardText id="post_desc">
-                        {key.description}<br/><br/><b>Created: </b>{d.toDateString() + ', ' + d.toLocaleTimeString()}
-                      </CardText>
-                      <Button>
-                        <Link to={{ pathname: "/entry_detail", state: key }} style={{ color: 'white' }}>Details</Link>
-                      </Button>
-                    </CardBody>
-                  </Card>
-                </Col>
-                <Col xxl="5" xl="4" lg="3" md="2" sm="2"></Col>
-            </Row>
+            <Col lg="4" md="6" xs="12">
+            <Card  xxl="5" xl="4" lg="3" md="2" sm="2">
+              <CardImg top  height="300px" max-width="100%" src={Main.handleDisplayPicture(key.picture)} alt="Card image cap" />
+              <CardBody>
+              <CardTitle id="post_name">{key.name}</CardTitle>
+              <CardSubtitle id="post_cat">{key.category}</CardSubtitle>
+              <CardText id="post_desc">
+                {key.description}<br/><br/><b>Created: </b>{d.toDateString() + ', ' + d.toLocaleTimeString()}
+              </CardText>
+              <Button>
+                <Link to={{ pathname: "/entry_detail", state: key }} style={{ color: 'white' }}>Details</Link>
+              </Button>
+              </CardBody>
+            </Card>
+            <br/>
+          </Col>
           );
         }
       });

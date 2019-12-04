@@ -4,14 +4,9 @@ import { Container, Jumbotron, Button } from 'reactstrap';
 import PropTypes from "prop-types";
 
 class SubmissionSuccessful extends Component {
-
-
-    constructor(props)
-    {
+    constructor(props) {
       super(props);
-
     }
-
 
     render() {
       return (

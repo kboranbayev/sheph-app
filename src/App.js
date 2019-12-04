@@ -6,6 +6,7 @@ import Footer from "./components/static/footer.js";
 import Router from "./Router";
 
 class App extends Component {
+
   render() {
     return (
       <BrowserRouter>
