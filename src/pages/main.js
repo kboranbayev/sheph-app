@@ -24,7 +24,7 @@ class Main extends Component {
   }
 
   static handleDisplayPicture(picture) {
-    return `http://localhost:5000/server/image/${picture}`;
+    return `http://35.166.123.68/server/image/${picture}`;
   }
 
   deleteEntries() {
@@ -35,7 +35,7 @@ class Main extends Component {
         if ((Date.now() - new Date(this.state[key].createdAt)) >= expiry_date_in_ms) {
           //data.append('entry', this.state[key]);
           console.log(this.state[key]);
-          axios.post("http://localhost:5000/server/delete/entry", this.state[key]).then((res) => {
+          axios.post("/server/delete/entry", this.state[key]).then((res) => {
             console.log(res);
             console.log(res.data);
           });
