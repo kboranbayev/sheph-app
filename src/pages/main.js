@@ -122,6 +122,7 @@ class Main extends Component {
       <Container className="fluid">
         <div className="mb-5">
           <h1 className="page_title mt-5">Active Posts</h1>
+          <h7>***Posts will be automatically removed after 6 days from date created***</h7>
           <Row>
             {entries}
           </Row>

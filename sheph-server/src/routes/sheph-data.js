@@ -94,10 +94,6 @@ router.get("/image/:filename", (req, res) => {
   });
 });
 
-// router.get("/search/:name", (req, res) => {
-//   Entry.find({})
-// });
-
 // search by name
 // returns data based on the name
 router.get("/entries/name/:name", (req, res) => {
@@ -139,10 +135,6 @@ router.get("/entries", (req, res) => {
     res.status(200).json({ data });
   });
 });
-
-// router.get("/search/:name", (req, res) => {
-//   Entry.find({})
-// });
 
 router.post("/entry/contact", (req, res) => {
   // axios.post(email,message,filename)
