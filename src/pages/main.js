@@ -93,7 +93,7 @@ class Main extends Component {
                   </CardBody>
                 </Card>
               </Col>
-          )
+          );
         } else {
           return (
               <Row className="mt-5">
