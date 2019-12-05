@@ -10,7 +10,7 @@ class About extends Component {
           are your concerns being heard?
         </h3>
         <br/>
-        <p className="text-secondary text-monospace">
+        <p className="text-monospace">
           Imagine you’re walking down the traffic lights and you see a notice, <br/>
           a notice looking for a witness, but you aren’t one of them, what would you do? <br/>
           From our research, majority of people wouldn't care less and would simply walk-by. <br/>
@@ -18,7 +18,7 @@ class About extends Component {
           those in need. And for that reason...
         </p>
         <br/>
-        <h3 style={{color: 'black'}}>
+        <h3>
           We brought Sheph!
         </h3>
         <br/>
