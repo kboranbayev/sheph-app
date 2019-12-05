@@ -1,0 +1,194 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[` 1`] = `
+<div>
+  <div>
+    <nav
+      brand="sheph-w-bg.png"
+      className="navbar navbar-expand-md navbar-light"
+      style={
+        Object {
+          "backgroundColor": "#0062b3",
+        }
+      }
+    >
+      <a
+        className="navbar-brand"
+        href="/"
+        onClick={[Function]}
+        style={
+          Object {
+            "color": "white",
+            "fontWeight": "900",
+          }
+        }
+      >
+        <img
+          alt="logo"
+          height="50"
+          src="sheph-w-bg.png"
+          width="50"
+        />
+         
+        Sheph
+      </a>
+      <button
+        aria-label="Toggle navigation"
+        className="navbar-toggler"
+        onClick={[Function]}
+        style={
+          Object {
+            "backgroundColor": "white",
+          }
+        }
+        type="button"
+      >
+        <span
+          className="navbar-toggler-icon"
+        />
+      </button>
+      <div
+        aria-expanded="false"
+        className="collapse navbar-collapse"
+        style={Object {}}
+      >
+        <ul
+          className="ml-auto navbar-nav"
+        >
+          <form
+            action="/search-results"
+            className="form-inline"
+          >
+            <div
+              className="form-group"
+            >
+              <input
+                className="form-control"
+                id="searchBar"
+                name="search"
+                placeholder="Search a name..."
+                required={true}
+                type="search"
+              />
+            </div>
+            <button
+              aria-label={null}
+              className="btn btn-success"
+              onClick={[Function]}
+            >
+              Search
+            </button>
+          </form>
+          <li
+            className="nav-item"
+          >
+            <a
+              className="nav-link"
+              href="/"
+              onClick={[Function]}
+              style={
+                Object {
+                  "color": "white",
+                }
+              }
+            >
+              Browse
+            </a>
+          </li>
+          <li
+            className="nav-item"
+          >
+            <a
+              className="nav-link"
+              href="/about"
+              onClick={[Function]}
+              style={
+                Object {
+                  "color": "white",
+                }
+              }
+            >
+              About
+            </a>
+          </li>
+          <li
+            className="nav-item"
+          >
+            <a
+              className="nav-link"
+              href="/submit"
+              onClick={[Function]}
+              style={
+                Object {
+                  "color": "white",
+                }
+              }
+            >
+              Submit
+            </a>
+          </li>
+        </ul>
+      </div>
+    </nav>
+  </div>
+  <div
+    className="main-content-container container-fluid px-4"
+  >
+    <div
+      className="fluid container"
+    >
+      <div
+        className="mb-5"
+      >
+        <h1
+          className="page_title mt-5"
+        >
+          Active Posts
+        </h1>
+        <h7>
+          ***Posts will be automatically removed after 6 days from date created***
+        </h7>
+        <div
+          className="row"
+        />
+        <div />
+      </div>
+    </div>
+  </div>
+  <footer
+    className="footer text-center"
+  >
+    <div
+      className="container"
+    >
+      <div
+        className="footer-bottom"
+      >
+        <p
+          className="text-xs-center"
+          style={
+            Object {
+              "color": "grey",
+            }
+          }
+        >
+          ©
+          2019
+           Sheph - All Rights Reserved | Contact us: 
+          <a
+            href="mailto:sheph@gmail.com"
+            style={
+              Object {
+                "color": "#55ACEE",
+              }
+            }
+            target="_top"
+          >
+            Sheph@gmail.com
+          </a>
+        </p>
+      </div>
+    </div>
+  </footer>
+</div>
+`;
