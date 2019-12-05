@@ -81,7 +81,7 @@ class SearchResults extends Component {
         if (this.checkNew(key)) {
           return (
             <Col lg="4" md="6" xs="12">
-              <Card  xxl="5" xl="4" lg="3" md="2" sm="2">
+              <Card  xxl="5" xl="4" lg="3" md="2" sm="2" style={{backgroundColor: 'grey'}}>
                 <CardImg top height="300px" max-width="100%" src={SearchResults.handleDisplayPicture(key.picture)} alt="Card image cap" />
                 <CardBody>
                 <CardTitle id="post_name">{key.name} <Badge color="secondary">New</Badge></CardTitle>
@@ -99,7 +99,7 @@ class SearchResults extends Component {
         } else {
           return (
             <Col lg="4" md="6" xs="12">
-              <Card  xxl="5" xl="4" lg="3" md="2" sm="2">
+              <Card  xxl="5" xl="4" lg="3" md="2" sm="2" style={{backgroundColor: 'grey'}}>
                 <CardImg top height="300px" max-width="100%" src={SearchResults.handleDisplayPicture(key.picture)} alt="Card image cap" />
                 <CardBody>
                   <CardTitle id="post_name">{key.name}</CardTitle>
