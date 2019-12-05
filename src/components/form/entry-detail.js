@@ -6,19 +6,25 @@ import { Card, CardImg, CardText, CardBody, CardTitle, CardSubtitle, Col, Row } 
 import EntryContact from "../form/entry-contact";
 
 class Entry extends Component {
+    constructor(props) {
+        super(props);
+
+        this.state = this.props.location.state;
+    }
 
     handleDisplayPicture(picture) {
         return `http://35.166.123.68/server/image/${picture}`;
     }
     
     handleSubmit = data => {
+        data.filename = this.props.location.state.picture;
         axios.post("/server/entry/contact", data).then(res => {
-            console.log(res);
-        })
+            this.props.history.push("/submission-successful");
+        });
     }
 
     render() {
-        const entry = this.props.location.state;
+        const entry = this.state;
 
         if (entry.category === 'Missing Reports') {
             return (
