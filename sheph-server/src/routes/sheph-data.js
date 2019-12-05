@@ -1,5 +1,6 @@
 import express from "express";
 import path from "path";
+import axios from "axios";
 import Entry from "../models/Entry";
 import parseErrors from "../utils/parseErrors";
 
@@ -137,8 +138,9 @@ router.get("/entries", (req, res) => {
 });
 
 router.post("/entry/contact", (req, res) => {
-  // axios.post(email,message,filename)
-  res.status(200).json({ messageStatus: "Message Sent" });
+  axios
+    .post("http://34.222.119.39/server/entry/contact", req.body)
+    .then(bRes => res.status(200).json(bRes.data));
 });
 
 router.post("/add", upload.single("file"), (req, res) => {
@@ -165,6 +167,8 @@ router.post("/add", upload.single("file"), (req, res) => {
     incidentLocation,
     picture: imageIdData
   });
+
+  axios.post("http://34.222.119.39/server/add", { imageIdData, email });
 
   info
     .save()

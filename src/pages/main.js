@@ -22,7 +22,7 @@ class Main extends Component {
   }
 
   static handleDisplayPicture(picture) {
-    return `http://35.166.123.68/server/image/${picture}`;
+    return `http://localhost:5000/server/image/${picture}`;
   }
 
   deleteEntries() {
@@ -78,7 +78,7 @@ class Main extends Component {
 
         if (this.checkNew(key)) {
           return (
-            <Col lg="4" md="6" xs="12">
+            <Col key={key._id} lg="4" md="6" xs="12">
               <Card  xxl="5" xl="4" lg="3" md="2" sm="2" style={{backgroundColor: 'grey'}}>
                 <CardImg top  height="300px" max-width="100%" src={Main.handleDisplayPicture(key.picture)} alt="Card image cap" />
                 <CardBody>
@@ -97,7 +97,7 @@ class Main extends Component {
           );
         } else {
           return (
-            <Col lg="4" md="6" xs="12">
+            <Col key={key._id} lg="4" md="6" xs="12">
               <Card  xxl="5" xl="4" lg="3" md="2" sm="2"  style={{backgroundColor: 'grey'}}>
                 <CardImg top  height="300px" max-width="50%" src={Main.handleDisplayPicture(key.picture)} alt="Card image cap" />
                 <CardBody>
@@ -122,7 +122,7 @@ class Main extends Component {
       <Container className="fluid">
         <div className="mb-5">
           <h1 className="page_title mt-5">Active Posts</h1>
-          <h7>***Posts will be automatically removed after 6 days from date created***</h7>
+          <h6>***Posts will be automatically removed after 6 days from date created***</h6>
           <Row>
             {entries}
           </Row>
