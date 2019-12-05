@@ -31,7 +31,7 @@ class Entry extends Component {
                 <Row className="mt-5">
                   <Col xxl="5" xl="4" lg="3" md="2" sm="2"></Col>
                     <Col xxl="2" xl="4" lg="6" md="8" sm="8">
-                        <Card id="entry-detail" key={entry.key} style={{backgroundColor: 'grey'}}>
+                        <Card id="entry-detail" key={entry.key} style={{color: 'black'}}>
                         <CardImg top height="300" src={this.handleDisplayPicture(entry.picture)} alt="Card image cap" />
                         <CardBody>
                             <CardTitle id="post_name">{entry.name}</CardTitle>
@@ -49,7 +49,7 @@ class Entry extends Component {
                 <Row className="mt-5">
                   <Col xxl="5" xl="4" lg="3" md="2" sm="2"></Col>
                     <Col xxl="2" xl="4" lg="6" md="8" sm="8">
-                        <Card id="entry-detail" key={entry.key} style={{backgroundColor: 'grey'}}>
+                        <Card id="entry-detail" key={entry.key} style={{color: 'black'}}>
                         <CardImg top height="300" src={this.handleDisplayPicture(entry.picture)} alt="Card image cap" />
                         <CardBody>
                             <CardTitle id="post_name">{entry.name}</CardTitle>
@@ -67,7 +67,7 @@ class Entry extends Component {
                 <Row className="mt-5">
                   <Col xxl="5" xl="4" lg="3" md="2" sm="2"></Col>
                     <Col xxl="2" xl="4" lg="6" md="8" sm="8">
-                        <Card id="entry-detail" key={entry.key} style={{backgroundColor: 'grey'}}>
+                        <Card id="entry-detail" key={entry.key} style={{color: 'black'}}>
                         <CardImg top height="300" src={this.handleDisplayPicture(entry.picture)} alt="Card image cap" />
                         <CardBody>
                             <CardTitle id="post_name">{entry.name}</CardTitle>

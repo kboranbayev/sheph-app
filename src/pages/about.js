@@ -64,7 +64,7 @@ class About extends Component {
             <br/>
             <h4 style={{color: 'grey'}}>Parm Dhaliwal</h4>
             <br/>
-            <p style={{fontStyle: 'italic'}}>"Some guy!"</p>
+            <p style={{fontStyle: 'italic'}}>"Front-end & marketing guy!"</p>
             <br/>
           </div>
         </div>
