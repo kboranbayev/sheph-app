@@ -13,7 +13,7 @@ class Entry extends Component {
     }
 
     handleDisplayPicture(picture) {
-        return `http://35.166.123.68/server/image/${picture}`;
+        return `https://sheph-backend.herokuapp.com/server/image/${picture}`;
     }
     
     handleSubmit = data => {

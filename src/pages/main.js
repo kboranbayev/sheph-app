@@ -22,7 +22,7 @@ class Main extends Component {
   }
 
   static handleDisplayPicture(picture) {
-    return `http://localhost:5000/server/image/${picture}`;
+    return `https://sheph-backend.herokuapp.com/server/image/${picture}`;
   }
 
   deleteEntries() {
